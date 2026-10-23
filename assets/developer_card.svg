@@ -1,0 +1,89 @@
+<svg width="410" height="340" viewBox="0 0 410 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e0a1b"/>
+      <stop offset="60%" stop-color="#140e28"/>
+      <stop offset="100%" stop-color="#0b0816"/>
+    </linearGradient>
+    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="50%" stop-color="#d946ef"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <filter id="glowSubtle" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; }
+      .mono { font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace; }
+    </style>
+  </defs>
+
+  <!-- Frame -->
+  <rect x="2" y="2" width="406" height="336" rx="16" fill="url(#cardBg)" stroke="#2d1b4e" stroke-width="1.5"/>
+  <rect x="2" y="2" width="406" height="336" rx="16" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-opacity="0.3"/>
+
+  <!-- Card Header -->
+  <text x="24" y="34" fill="#f8fafc" class="title" font-size="15" letter-spacing="1">DEVELOPER PROFILE</text>
+  <text x="386" y="34" text-anchor="end" fill="#c084fc" class="mono" font-size="11">SYS // ID</text>
+  <line x1="24" y1="44" x2="386" y2="44" stroke="#2a1845" stroke-width="1"/>
+
+  <!-- Avatar / Level Ring (Centered & Modern) -->
+  <g transform="translate(85, 120)">
+    <circle cx="0" cy="0" r="48" fill="#130b24" stroke="url(#purpleGradient)" stroke-width="3" filter="url(#glowSubtle)"/>
+    <circle cx="0" cy="0" r="40" fill="#1b1035"/>
+    <!-- Terminal Code Icon -->
+    <path d="M-12 -8 L-4 0 L-12 8" stroke="#ec4899" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M-1 8 L10 8" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="0" y="66" text-anchor="middle" fill="#e2e8f0" class="mono" font-size="12" font-weight="700">@RaidenMercury</text>
+  </g>
+
+  <!-- Stats Grid on Right -->
+  <g transform="translate(165, 75)">
+    <circle cx="8" cy="8" r="3.5" fill="#ec4899"/>
+    <text x="20" y="12" fill="#94a3b8" class="mono" font-size="11">LEVEL</text>
+    <text x="105" y="12" fill="#f1f5f9" class="mono" font-size="12" font-weight="700">Lv. 05</text>
+
+    <circle cx="8" cy="34" r="3.5" fill="#c084fc"/>
+    <text x="20" y="38" fill="#94a3b8" class="mono" font-size="11">CLASS</text>
+    <text x="105" y="38" fill="#c084fc" class="mono" font-size="12" font-weight="700">Developer</text>
+
+    <circle cx="8" cy="60" r="3.5" fill="#38bdf8"/>
+    <text x="20" y="64" fill="#94a3b8" class="mono" font-size="11">REPOSITORIES</text>
+    <text x="105" y="64" fill="#38bdf8" class="mono" font-size="12" font-weight="700">2 Repos</text>
+
+    <circle cx="8" cy="86" r="3.5" fill="#10b981"/>
+    <text x="20" y="90" fill="#94a3b8" class="mono" font-size="11">CODE BASE</text>
+    <text x="105" y="90" fill="#10b981" class="mono" font-size="12" font-weight="700">133.3 KB</text>
+  </g>
+
+  <!-- Level Progress Section -->
+  <g transform="translate(24, 215)">
+    <text x="0" y="12" fill="#cbd5e1" class="mono" font-size="11" font-weight="600">LEVEL PROGRESSION</text>
+    <text x="362" y="12" text-anchor="end" fill="#f472b6" class="mono" font-size="11" font-weight="700">26% EXP</text>
+    
+    <!-- Track -->
+    <rect x="0" y="22" width="362" height="12" rx="6" fill="#170f2b" stroke="#371d5b" stroke-width="1"/>
+    <!-- Fill -->
+    <rect x="1" y="23" width="93" height="10" rx="5" fill="url(#purpleGradient)" filter="url(#glowSubtle)"/>
+    
+    <text x="0" y="48" fill="#64748b" class="mono" font-size="10">CURRENT: LVL 05</text>
+    <text x="362" y="48" text-anchor="end" fill="#64748b" class="mono" font-size="10">NEXT: LVL 06</text>
+  </g>
+
+  <!-- Bottom Metric Pills -->
+  <g transform="translate(24, 290)">
+    <rect x="0" y="0" width="114" height="24" rx="12" fill="#190e2f" stroke="#7e22ce" stroke-width="1"/>
+    <text x="57" y="16" text-anchor="middle" fill="#e9d5ff" class="mono" font-size="10">AUTO-SYNC</text>
+
+    <rect x="124" y="0" width="114" height="24" rx="12" fill="#190e2f" stroke="#ec4899" stroke-width="1"/>
+    <text x="181" y="16" text-anchor="middle" fill="#fbcfe8" class="mono" font-size="10">METRICS ON</text>
+
+    <rect x="248" y="0" width="114" height="24" rx="12" fill="#190e2f" stroke="#06b6d4" stroke-width="1"/>
+    <text x="305" y="16" text-anchor="middle" fill="#bae6fd" class="mono" font-size="10">ACTIVE CODE</text>
+  </g>
+</svg>
