@@ -42,27 +42,27 @@
   <!-- Top Title Bar -->
   <g transform="translate(24, 22)">
     <circle cx="6" cy="6" r="4" fill="#c084fc" filter="url(#cardGlow)"/>
-    <text x="18" y="10" fill="#f8fafc" class="title" font-size="14" letter-spacing="1">THE AUTODIDACT JOURNEY</text>
-    <text x="362" y="10" text-anchor="end" fill="#c084fc" class="mono" font-size="10">PROFILE // 01</text>
+    <text x="18" y="10" fill="#f8fafc" class="title" font-size="14" letter-spacing="1">TECHNICAL SETUP &amp; FOCUS</text>
+    <text x="362" y="10" text-anchor="end" fill="#c084fc" class="mono" font-size="10">SYS // SPECS</text>
     <line x1="0" y1="20" x2="362" y2="20" stroke="#2a124c" stroke-width="1"/>
   </g>
 
-  <!-- Narrative Boxes with Ample Padding and Sans-Serif Text (Zero Overflow) -->
+  <!-- Boxes with Fresh, Non-Repetitive Technical Info -->
   <g transform="translate(24, 58)">
-    <!-- Box 1: Perfil & Enfoque -->
+    <!-- Box 1: Áreas de Práctica -->
     <rect width="362" height="62" rx="10" fill="#140a26" stroke="#2e1254" stroke-width="1"/>
     <circle cx="22" cy="31" r="11" fill="#240f42"/>
-    <text x="22" y="35" text-anchor="middle" fill="#c084fc" font-size="12">⚡</text>
-    <text x="42" y="24" fill="#e9d5ff" class="bold-txt" font-size="12">Perfil &amp; Enfoque</text>
-    <text x="42" y="44" class="desc-txt">Técnico informático • Enfoque total en lo que me atrae</text>
+    <text x="22" y="35" text-anchor="middle" fill="#c084fc" font-size="12">🌐</text>
+    <text x="42" y="24" fill="#e9d5ff" class="bold-txt" font-size="12">Áreas de Práctica</text>
+    <text x="42" y="44" class="desc-txt">Servidores dedicados, bots interactivos y herramientas de red</text>
 
-    <!-- Box 2: Apoyo IA -->
+    <!-- Box 2: Criterio & Arquitectura -->
     <g transform="translate(0, 70)">
       <rect width="362" height="62" rx="10" fill="#140a26" stroke="#2e1254" stroke-width="1"/>
       <circle cx="22" cy="31" r="11" fill="#240f42"/>
-      <text x="22" y="35" text-anchor="middle" fill="#38bdf8" font-size="12">🧠</text>
-      <text x="42" y="24" fill="#e9d5ff" class="bold-txt" font-size="12">Apoyo con Inteligencia Artificial</text>
-      <text x="42" y="44" class="desc-txt">Consulta diaria para entender conceptos, bases y lógica</text>
+      <text x="22" y="35" text-anchor="middle" fill="#38bdf8" font-size="12">⚙️</text>
+      <text x="42" y="24" fill="#e9d5ff" class="bold-txt" font-size="12">Criterio de Construcción</text>
+      <text x="42" y="44" class="desc-txt">Modularidad, depuración en local y optimización de recursos</text>
     </g>
 
     <!-- Box 3: Entorno Fedora -->
@@ -70,19 +70,19 @@
       <rect width="362" height="62" rx="10" fill="#140a26" stroke="#2e1254" stroke-width="1"/>
       <circle cx="22" cy="31" r="11" fill="#240f42"/>
       <text x="22" y="35" text-anchor="middle" fill="#10b981" font-size="12">💻</text>
-      <text x="42" y="24" fill="#e9d5ff" class="bold-txt" font-size="12">Entorno: Fedora Workstation</text>
-      <text x="42" y="44" class="desc-txt">Workstation estable y eficiente para el día a día</text>
+      <text x="42" y="24" fill="#e9d5ff" class="bold-txt" font-size="12">Estación de Trabajo</text>
+      <text x="42" y="44" class="desc-txt">Fedora Linux para un flujo de trabajo ágil y sin fricción</text>
     </g>
   </g>
 
   <!-- Progress Indicators -->
   <g transform="translate(24, 280)">
-    <text x="0" y="10" fill="#94a3b8" class="mono" font-size="10">INTERÉS &amp; ENFOQUE TÉCNICO</text>
-    <text x="362" y="10" text-anchor="end" fill="#c084fc" class="mono" font-size="10">100% [ACTIVO]</text>
+    <text x="0" y="10" fill="#94a3b8" class="mono" font-size="10">ENFOQUE EN PROYECTOS ACTIVOS</text>
+    <text x="362" y="10" text-anchor="end" fill="#c084fc" class="mono" font-size="10">100% [EN MARCHA]</text>
     <rect x="0" y="16" width="362" height="6" rx="3" fill="#150a24"/>
     <rect x="0" y="16" width="362" height="6" rx="3" fill="url(#neonBar)" filter="url(#cardGlow)"/>
 
-    <text x="0" y="38" fill="#94a3b8" class="mono" font-size="10">EXPERIMENTACIÓN PRÁCTICA</text>
+    <text x="0" y="38" fill="#94a3b8" class="mono" font-size="10">TESTING &amp; EXPERIMENTACIÓN EN LOCAL</text>
     <text x="362" y="38" text-anchor="end" fill="#38bdf8" class="mono" font-size="10">CONSTANTE</text>
     <rect x="0" y="44" width="362" height="6" rx="3" fill="#150a24"/>
     <rect x="0" y="44" width="330" height="6" rx="3" fill="#38bdf8"/>
@@ -91,6 +91,6 @@
   <!-- Bottom Tag -->
   <g transform="translate(24, 350)">
     <rect width="362" height="24" rx="6" fill="#150a29" stroke="#37155e" stroke-width="1"/>
-    <text x="181" y="16" text-anchor="middle" fill="#c084fc" class="mono" font-size="9">✦ APRENDIENDO A CONSTRUIR Y FACILITAR EL DÍA A DÍA ✦</text>
+    <text x="181" y="16" text-anchor="middle" fill="#c084fc" class="mono" font-size="9">✦ CONSTRUYENDO HERRAMIENTAS Y SOLUCIONES PRÁCTICAS ✦</text>
   </g>
 </svg>

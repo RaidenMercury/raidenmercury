@@ -1,32 +1,10 @@
 <svg width="410" height="390" viewBox="0 0 410 390" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Background Gradient -->
     <radialGradient id="techDark" cx="50%" cy="20%" r="85%">
       <stop offset="0%" stop-color="#1c0d38"/>
       <stop offset="50%" stop-color="#0e0620"/>
       <stop offset="100%" stop-color="#070310"/>
     </radialGradient>
-
-    <!-- Electric Neon Gradient -->
-    <linearGradient id="neonBarJava" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#f59e0b"/>
-      <stop offset="100%" stop-color="#ef4444"/>
-    </linearGradient>
-
-    <linearGradient id="neonBarPy" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#38bdf8"/>
-      <stop offset="100%" stop-color="#3b82f6"/>
-    </linearGradient>
-
-    <linearGradient id="neonBarGo" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#06b6d4"/>
-      <stop offset="100%" stop-color="#10b981"/>
-    </linearGradient>
-
-    <linearGradient id="neonBarFuture" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#c084fc"/>
-      <stop offset="100%" stop-color="#e9d5ff"/>
-    </linearGradient>
 
     <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#c084fc" stop-opacity="0.6"/>
@@ -56,72 +34,60 @@
   <!-- Top Title Bar -->
   <g transform="translate(24, 22)">
     <circle cx="6" cy="6" r="4" fill="#a855f7" filter="url(#glowTech)"/>
-    <text x="18" y="10" fill="#f8fafc" class="title" font-size="14" letter-spacing="1">CORE LANGUAGES &amp; FOCUS</text>
-    <text x="362" y="10" text-anchor="end" fill="#c084fc" class="mono" font-size="10">STACK // 02</text>
+    <text x="18" y="10" fill="#f8fafc" class="title" font-size="14" letter-spacing="1">MOST USED LANGUAGES</text>
+    <text x="362" y="10" text-anchor="end" fill="#c084fc" class="mono" font-size="10">GITHUB DB</text>
     <line x1="0" y1="20" x2="362" y2="20" stroke="#2a124c" stroke-width="1"/>
   </g>
 
-  <!-- Language 1: Java (Primary) -->
-  <g transform="translate(24, 60)">
-    <circle cx="12" cy="14" r="10" fill="#1b1233" stroke="#f59e0b" stroke-width="1.2"/>
-    <text x="12" y="18" text-anchor="middle" fill="#f59e0b" font-size="10">☕</text>
-    <text x="32" y="14" fill="#f1f5f9" class="bold-txt" font-size="13">Java</text>
-    
-    <!-- Status Pill -->
-    <rect x="290" y="2" width="72" height="20" rx="10" fill="#291206" stroke="#f59e0b" stroke-width="1"/>
-    <text x="326" y="15" text-anchor="middle" fill="#fde68a" class="mono" font-size="9" font-weight="700">EN USO</text>
+  <!-- Real Languages Data Rows -->
+  
+    <!-- Go Row -->
+    <g transform="translate(24, 62)">
+      <circle cx="12" cy="14" r="10" fill="#1b1233" stroke="#00ADD8" stroke-width="1.2"/>
+      <text x="12" y="18" text-anchor="middle" fill="#00ADD8" font-size="10">●</text>
+      
+      <text x="32" y="14" fill="#f1f5f9" class="bold-txt" font-size="13">Go</text>
+      
+      <rect x="290" y="2" width="72" height="20" rx="10" fill="#150a24" stroke="#00ADD8" stroke-width="1"/>
+      <text x="326" y="15" text-anchor="middle" fill="#f1f5f9" class="mono" font-size="9" font-weight="700">44.0%</text>
 
-    <text x="32" y="32" class="desc-txt">Lógica, arquitectura y servidores dedicados</text>
-    <rect x="32" y="40" width="330" height="4" rx="2" fill="#140924"/>
-    <rect x="32" y="40" width="300" height="4" rx="2" fill="url(#neonBarJava)"/>
-  </g>
+      <text x="32" y="32" class="desc-txt">59.1 KB de código en repositorios públicos</text>
+      <rect x="32" y="40" width="330" height="4" rx="2" fill="#140924"/>
+      <rect x="32" y="40" width="132" height="4" rx="2" fill="#00ADD8"/>
+    </g>
+    <!-- Python Row -->
+    <g transform="translate(24, 128)">
+      <circle cx="12" cy="14" r="10" fill="#1b1233" stroke="#38bdf8" stroke-width="1.2"/>
+      <text x="12" y="18" text-anchor="middle" fill="#38bdf8" font-size="10">●</text>
+      
+      <text x="32" y="14" fill="#f1f5f9" class="bold-txt" font-size="13">Python</text>
+      
+      <rect x="290" y="2" width="72" height="20" rx="10" fill="#150a24" stroke="#38bdf8" stroke-width="1"/>
+      <text x="326" y="15" text-anchor="middle" fill="#f1f5f9" class="mono" font-size="9" font-weight="700">28.5%</text>
 
-  <!-- Language 2: Python -->
-  <g transform="translate(24, 126)">
-    <circle cx="12" cy="14" r="10" fill="#1b1233" stroke="#38bdf8" stroke-width="1.2"/>
-    <text x="12" y="18" text-anchor="middle" fill="#38bdf8" font-size="10">🐍</text>
-    <text x="32" y="14" fill="#f1f5f9" class="bold-txt" font-size="13">Python</text>
+      <text x="32" y="32" class="desc-txt">38.2 KB de código en repositorios públicos</text>
+      <rect x="32" y="40" width="330" height="4" rx="2" fill="#140924"/>
+      <rect x="32" y="40" width="85" height="4" rx="2" fill="#38bdf8"/>
+    </g>
+    <!-- HTML Row -->
+    <g transform="translate(24, 194)">
+      <circle cx="12" cy="14" r="10" fill="#1b1233" stroke="#e34c26" stroke-width="1.2"/>
+      <text x="12" y="18" text-anchor="middle" fill="#e34c26" font-size="10">●</text>
+      
+      <text x="32" y="14" fill="#f1f5f9" class="bold-txt" font-size="13">HTML</text>
+      
+      <rect x="290" y="2" width="72" height="20" rx="10" fill="#150a24" stroke="#e34c26" stroke-width="1"/>
+      <text x="326" y="15" text-anchor="middle" fill="#f1f5f9" class="mono" font-size="9" font-weight="700">27.5%</text>
 
-    <rect x="290" y="2" width="72" height="20" rx="10" fill="#082032" stroke="#38bdf8" stroke-width="1"/>
-    <text x="326" y="15" text-anchor="middle" fill="#bae6fd" class="mono" font-size="9" font-weight="700">ACTIVO</text>
+      <text x="32" y="32" class="desc-txt">37.0 KB de código en repositorios públicos</text>
+      <rect x="32" y="40" width="330" height="4" rx="2" fill="#140924"/>
+      <rect x="32" y="40" width="82" height="4" rx="2" fill="#e34c26"/>
+    </g>
 
-    <text x="32" y="32" class="desc-txt">Automatización, bots y scripts del sistema</text>
-    <rect x="32" y="40" width="330" height="4" rx="2" fill="#140924"/>
-    <rect x="32" y="40" width="280" height="4" rx="2" fill="url(#neonBarPy)"/>
-  </g>
-
-  <!-- Language 3: Go (Golang) -->
-  <g transform="translate(24, 192)">
-    <circle cx="12" cy="14" r="10" fill="#1b1233" stroke="#06b6d4" stroke-width="1.2"/>
-    <text x="12" y="18" text-anchor="middle" fill="#06b6d4" font-size="10">🔵</text>
-    <text x="32" y="14" fill="#f1f5f9" class="bold-txt" font-size="13">Go (Golang)</text>
-
-    <rect x="290" y="2" width="72" height="20" rx="10" fill="#042622" stroke="#06b6d4" stroke-width="1"/>
-    <text x="326" y="15" text-anchor="middle" fill="#a7f3d0" class="mono" font-size="9" font-weight="700">ACTIVO</text>
-
-    <text x="32" y="32" class="desc-txt">Herramientas de sistemas y servicios de red</text>
-    <rect x="32" y="40" width="330" height="4" rx="2" fill="#140924"/>
-    <rect x="32" y="40" width="250" height="4" rx="2" fill="url(#neonBarGo)"/>
-  </g>
-
-  <!-- Language 4: Nuevas Tecnologías -->
-  <g transform="translate(24, 258)">
-    <circle cx="12" cy="14" r="10" fill="#1b1233" stroke="#c084fc" stroke-width="1.2"/>
-    <text x="12" y="18" text-anchor="middle" fill="#c084fc" font-size="10">🔮</text>
-    <text x="32" y="14" fill="#f1f5f9" class="bold-txt" font-size="13">Nuevas Tecnologías</text>
-
-    <rect x="290" y="2" width="72" height="20" rx="10" fill="#240f42" stroke="#c084fc" stroke-width="1"/>
-    <text x="326" y="15" text-anchor="middle" fill="#f0abfc" class="mono" font-size="9" font-weight="700">ABIERTO</text>
-
-    <text x="32" y="32" class="desc-txt">Aprendiendo según la necesidad del proyecto</text>
-    <rect x="32" y="40" width="330" height="4" rx="2" fill="#140924"/>
-    <rect x="32" y="40" width="330" height="4" rx="2" fill="url(#neonBarFuture)" filter="url(#glowTech)"/>
-  </g>
-
-  <!-- Bottom Quote with Ample Margin (48px height) -->
-  <g transform="translate(24, 326)">
-    <rect width="362" height="48" rx="8" fill="#140826" stroke="#2e1053" stroke-width="1"/>
-    <text x="181" y="20" text-anchor="middle" fill="#e9d5ff" class="bold-txt" font-size="10">&quot;El lenguaje es solo una herramienta.&quot;</text>
-    <text x="181" y="35" text-anchor="middle" class="desc-txt">Lo importante es resolver problemas y facilitar el trabajo.</text>
+  <!-- Bottom Real-time Sync Note -->
+  <g transform="translate(24, 330)">
+    <rect width="362" height="42" rx="8" fill="#140826" stroke="#2e1053" stroke-width="1"/>
+    <text x="181" y="18" text-anchor="middle" fill="#e9d5ff" class="bold-txt" font-size="10">✦ Sincronizado en tiempo real con GitHub API ✦</text>
+    <text x="181" y="32" text-anchor="middle" fill="#94a3b8" class="desc-txt">Los proyectos privados se reflejarán al publicarse</text>
   </g>
 </svg>
