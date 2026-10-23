@@ -1,0 +1,116 @@
+<svg width="850" height="190" viewBox="0 0 850 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="headerBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0916"/>
+      <stop offset="50%" stop-color="#140d28"/>
+      <stop offset="100%" stop-color="#0a0714"/>
+    </linearGradient>
+    <linearGradient id="neonPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="50%" stop-color="#d946ef"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="cyanAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+
+    <!-- Neon Glow Filters -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur1"/>
+      <feGaussianBlur stdDeviation="14" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="subtleGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      .mono { font-family: 'SF Pro Display', -apple-system, 'Segoe UI', Roboto, Helvetica, monospace, sans-serif; }
+      .code-font { font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace; }
+      .pulse-dot {
+        animation: pulse 2s infinite ease-in-out;
+      }
+      .shimmer {
+        animation: glowShift 4s infinite alternate;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.3; transform: scale(0.9); }
+        50% { opacity: 1; transform: scale(1.1); }
+      }
+      @keyframes glowShift {
+        0% { stop-color: #ec4899; }
+        50% { stop-color: #d946ef; }
+        100% { stop-color: #8b5cf6; }
+      }
+    </style>
+  </defs>
+
+  <!-- Outer Card Frame -->
+  <rect x="5" y="5" width="840" height="180" rx="20" fill="url(#headerBg)" stroke="#2b1a4a" stroke-width="1.5"/>
+  <rect x="5" y="5" width="840" height="180" rx="20" fill="none" stroke="url(#neonPurple)" stroke-width="1.5" stroke-opacity="0.35"/>
+
+  <!-- Top Navigation Capsule (matches image top bar) -->
+  <g transform="translate(25, 20)">
+    <rect width="800" height="42" rx="21" fill="#120c24" stroke="#331e58" stroke-width="1.2"/>
+    
+    <!-- Logo Pill -->
+    <circle cx="28" cy="21" r="7" fill="#d946ef" filter="url(#subtleGlow)"/>
+    <circle cx="28" cy="21" r="3.5" fill="#ffffff"/>
+    <text x="44" y="26" fill="#f1f5f9" class="mono" font-size="14" font-weight="700" letter-spacing="1">SYSTEM</text>
+    
+    <!-- Nav Links / Status Pills -->
+    <text x="140" y="26" fill="#c084fc" class="code-font" font-size="12" font-weight="500">QUEST LOG ▾</text>
+    <text x="260" y="26" fill="#94a3b8" class="code-font" font-size="12" font-weight="400">INVENTORY</text>
+    <text x="365" y="26" fill="#94a3b8" class="code-font" font-size="12" font-weight="400">SKILLS</text>
+
+    <!-- Search/Terminal Pill -->
+    <rect x="520" y="7" width="160" height="28" rx="14" fill="#0c0817" stroke="#3b1f63" stroke-width="1"/>
+    <circle cx="538" cy="21" r="4.5" stroke="#a855f7" stroke-width="1.5" fill="none"/>
+    <line x1="541.5" y1="24.5" x2="546" y2="29" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="554" y="25" fill="#a855f7" class="code-font" font-size="11">HUNTER_ID: #001</text>
+
+    <!-- Right Controls -->
+    <circle cx="705" cy="21" r="10" fill="#1f1338" stroke="#7e22ce" stroke-width="1"/>
+    <text x="701" y="25" fill="#e879f9" font-size="12">⚡</text>
+
+    <circle cx="735" cy="21" r="10" fill="#1f1338" stroke="#7e22ce" stroke-width="1"/>
+    <text x="731" y="25" fill="#c084fc" font-size="12">⚙</text>
+
+    <rect x="758" y="10" width="30" height="22" rx="11" fill="url(#neonPurple)" filter="url(#subtleGlow)"/>
+    <circle cx="778" cy="21" r="7" fill="#ffffff"/>
+  </g>
+
+  <!-- Main Banner Header -->
+  <g transform="translate(45, 95)">
+    <!-- Solo Leveling Notification Badge -->
+    <rect x="0" y="0" width="220" height="24" rx="6" fill="#23103d" stroke="#a855f7" stroke-width="1" stroke-opacity="0.6"/>
+    <circle cx="12" cy="12" r="4" fill="#22c55e"/>
+    <text x="24" y="16" fill="#f0abfc" class="code-font" font-size="11" font-weight="600" letter-spacing="0.5">[ SYSTEM NOTIFICATION ]</text>
+
+    <!-- Main Title -->
+    <text x="0" y="58" fill="#ffffff" class="mono" font-size="34" font-weight="900" letter-spacing="1.5">SOLO LEVELING</text>
+    <text x="325" y="58" fill="url(#neonPurple)" class="mono" font-size="34" font-weight="900" letter-spacing="1.5" filter="url(#subtleGlow)">SYSTEM</text>
+    
+    <!-- Player Subtitle -->
+    <text x="2" y="78" fill="#a855f7" class="code-font" font-size="13" font-weight="500" letter-spacing="1">PLAYER: RAIDEN MERCURY // RANK: E-RANK HUNTER (AWAKENING)</text>
+  </g>
+
+  <!-- Right Decorative Cyber Hex/Elements -->
+  <g transform="translate(680, 95)">
+    <rect x="0" y="8" width="125" height="60" rx="12" fill="#150e2a" stroke="#4c1d95" stroke-width="1.2"/>
+    <text x="16" y="28" fill="#94a3b8" class="code-font" font-size="10">DIFFICULTY</text>
+    <text x="16" y="48" fill="#ec4899" class="mono" font-size="16" font-weight="800" filter="url(#subtleGlow)">SURVIVAL</text>
+    <circle cx="105" cy="38" r="8" fill="#3b0764" stroke="#d946ef" stroke-width="1.5"/>
+    <text x="101" y="42" fill="#ffffff" font-size="10">✦</text>
+  </g>
+</svg>

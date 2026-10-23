@@ -1,0 +1,121 @@
+<svg width="410" height="360" viewBox="0 0 410 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="goalCardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e0a1b"/>
+      <stop offset="60%" stop-color="#140e28"/>
+      <stop offset="100%" stop-color="#0b0816"/>
+    </linearGradient>
+    <linearGradient id="ringNeonPink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="50%" stop-color="#d946ef"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="potionLiquid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e879f9"/>
+      <stop offset="100%" stop-color="#7e22ce"/>
+    </linearGradient>
+
+    <filter id="goalGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      .title-font { font-family: 'SF Pro Display', -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif; }
+      .code-font { font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace; }
+    </style>
+  </defs>
+
+  <!-- Background Card -->
+  <rect x="5" y="5" width="400" height="350" rx="20" fill="url(#goalCardBg)" stroke="#2d1b4e" stroke-width="1.5"/>
+  <rect x="5" y="5" width="400" height="350" rx="20" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-opacity="0.3"/>
+
+  <!-- Top Title -->
+  <text x="24" y="36" fill="#f8fafc" class="title-font" font-size="16" font-weight="800" letter-spacing="1">GOAL COMPLETION</text>
+  <text x="325" y="36" fill="#38bdf8" class="code-font" font-size="11" font-weight="600">CYCLE 2026</text>
+  <line x1="24" y1="46" x2="386" y2="46" stroke="#2a1845" stroke-width="1.2"/>
+
+  <!-- Radial Progress Ring Section -->
+  <g transform="translate(205, 135)">
+    <!-- Track Ring -->
+    <circle cx="0" cy="0" r="62" fill="none" stroke="#1d1235" stroke-width="14"/>
+    
+    <!-- Active Progress Arc (70% circumference = 2 * PI * 62 * 0.70 = 272.7 out of 389.5) -->
+    <circle cx="0" cy="0" r="62" fill="none" stroke="url(#ringNeonPink)" stroke-width="14"
+            stroke-dasharray="273 390" stroke-linecap="round" transform="rotate(-90)" filter="url(#goalGlow)"/>
+
+    <!-- Center Data -->
+    <circle cx="0" cy="0" r="48" fill="#130b24"/>
+    <text x="0" y="-6" text-anchor="middle" fill="#94a3b8" class="code-font" font-size="11" font-weight="600">XP RATIO</text>
+    <text x="0" y="16" text-anchor="middle" fill="#ffffff" class="title-font" font-size="20" font-weight="900">70%</text>
+    <text x="0" y="30" text-anchor="middle" fill="#c084fc" class="code-font" font-size="9">700 / 1000 XP</text>
+
+    <!-- Satellite dots on left -->
+    <circle cx="-95" cy="-30" r="2.5" fill="#4c1d95"/>
+    <circle cx="-100" cy="-5" r="3.5" fill="#9333ea"/>
+    <circle cx="-98" cy="20" r="2.5" fill="#c084fc"/>
+    <circle cx="-90" cy="45" r="2" fill="#4c1d95"/>
+  </g>
+
+  <!-- Potion Bottles / Alchemist Inventory (Matching reference image bottom-left "Ah Iwet") -->
+  <g transform="translate(24, 235)">
+    <line x1="0" y1="0" x2="360" y2="0" stroke="#24143d" stroke-width="1"/>
+    <text x="0" y="20" fill="#e2e8f0" class="code-font" font-size="12" font-weight="700">INVENTORY: ALCHEMY &amp; BUFFS</text>
+
+    <!-- Potion 1: Coffee Elixir -->
+    <g transform="translate(25, 34)">
+      <!-- Bottle neck and cork -->
+      <rect x="12" y="0" width="8" height="5" rx="1" fill="#78350f"/>
+      <rect x="13" y="5" width="6" height="6" fill="#475569" fill-opacity="0.4"/>
+      <!-- Bottle Body -->
+      <rect x="4" y="11" width="24" height="34" rx="6" fill="#1b122e" stroke="#a855f7" stroke-width="1.2"/>
+      <!-- Liquid inside -->
+      <rect x="6" y="22" width="20" height="21" rx="4" fill="url(#potionLiquid)" filter="url(#goalGlow)"/>
+      <text x="16" y="36" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">☕</text>
+      <text x="16" y="56" text-anchor="middle" fill="#94a3b8" class="code-font" font-size="8">CAFFEINE</text>
+    </g>
+
+    <!-- Potion 2: Focus Flask -->
+    <g transform="translate(95, 34)">
+      <rect x="13" y="0" width="6" height="5" rx="1" fill="#78350f"/>
+      <rect x="14" y="5" width="4" height="6" fill="#475569" fill-opacity="0.4"/>
+      <ellipse cx="16" cy="30" rx="14" ry="16" fill="#1b122e" stroke="#ec4899" stroke-width="1.2"/>
+      <ellipse cx="16" cy="32" rx="12" ry="12" fill="#ec4899" fill-opacity="0.8" filter="url(#goalGlow)"/>
+      <text x="16" y="36" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">⚡</text>
+      <text x="16" y="56" text-anchor="middle" fill="#94a3b8" class="code-font" font-size="8">FOCUS</text>
+    </g>
+
+    <!-- Potion 3: Mana Vial -->
+    <g transform="translate(165, 34)">
+      <rect x="13" y="0" width="6" height="5" rx="1" fill="#78350f"/>
+      <rect x="14" y="5" width="4" height="6" fill="#475569" fill-opacity="0.4"/>
+      <rect x="6" y="11" width="20" height="34" rx="4" fill="#1b122e" stroke="#38bdf8" stroke-width="1.2"/>
+      <rect x="8" y="20" width="16" height="23" rx="3" fill="#0284c7" filter="url(#goalGlow)"/>
+      <text x="16" y="35" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">💧</text>
+      <text x="16" y="56" text-anchor="middle" fill="#94a3b8" class="code-font" font-size="8">MANA</text>
+    </g>
+
+    <!-- Potion 4: Wisdom Elixir -->
+    <g transform="translate(235, 34)">
+      <rect x="12" y="0" width="8" height="5" rx="1" fill="#78350f"/>
+      <rect x="13" y="5" width="6" height="6" fill="#475569" fill-opacity="0.4"/>
+      <rect x="5" y="11" width="22" height="34" rx="5" fill="#1b122e" stroke="#10b981" stroke-width="1.2"/>
+      <rect x="7" y="19" width="18" height="24" rx="3" fill="#059669" filter="url(#goalGlow)"/>
+      <text x="16" y="35" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">📖</text>
+      <text x="16" y="56" text-anchor="middle" fill="#94a3b8" class="code-font" font-size="8">DOCS</text>
+    </g>
+
+    <!-- Potion 5: Midnight Flask -->
+    <g transform="translate(305, 34)">
+      <rect x="12" y="0" width="8" height="5" rx="1" fill="#78350f"/>
+      <rect x="13" y="5" width="6" height="6" fill="#475569" fill-opacity="0.4"/>
+      <rect x="4" y="11" width="24" height="34" rx="6" fill="#1b122e" stroke="#f59e0b" stroke-width="1.2"/>
+      <rect x="6" y="24" width="20" height="19" rx="4" fill="#d97706" filter="url(#goalGlow)"/>
+      <text x="16" y="37" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">🌙</text>
+      <text x="16" y="56" text-anchor="middle" fill="#94a3b8" class="code-font" font-size="8">NIGHT</text>
+    </g>
+  </g>
+</svg>
