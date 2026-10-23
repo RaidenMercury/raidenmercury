@@ -49,13 +49,13 @@
 
 ```yaml
 Developer: RaidenMercury
-Role: Aprendiz en Tecnología / Entusiasta de Código
-Enfoque: Linux, Terminal, Automatización & Desarrollo de Software
-Objetivo: Crear herramientas prácticas, aprender lógica y entender sistemas
-Filosofía: Aprender haciendo, probar, romper y reconstruir
+Enfoque: Sistemas Linux, Redes, Automatización & IA Local
+Herramientas: Go, Python, Java, JavaScript & Bash
+Entornos: Arch Linux, Fedora & Servidores Dedicados
+Filosofía: Aprender desarmando sistemas, entendiendo cómo funcionan y creando herramientas útiles
 ```
 
-> *"Amateur en constante aprendizaje. No busco saberlo todo, sino entender cómo funcionan las cosas y construir herramientas útiles paso a paso."*
+> *"Entusiasta y aprendiz autodidacta. No vengo de una academia tradicional: aprendo en la terminal, montando servidores, automatizando tareas con bots y explorando redes e infraestructura. Me interesa el código que interactúa con el sistema real."*
 
 ---
 
@@ -90,9 +90,11 @@ Filosofía: Aprender haciendo, probar, romper y reconstruir
 
 ### 📂 `[ PROYECTOS & EXPLORACIONES DESTACADAS ]`
 
-- 🤖 **Bots & Automatización**: Herramientas y scripts para gestión de servidores, automatización de tareas y experimentos con APIs.
-- 🐧 **Entorno Linux & CLI**: Configuración de sistemas, scripts en Bash y herramientas de terminal en Arch y Fedora.
-- 🔍 **Redes & Monitoreo**: Proyectos de descubrimiento y exploración de infraestructura y servicios.
+- 🌐 **Sistemas & Redes**: Herramientas CLI y descubrimiento de red en **Go** (`sre-network-discovery`).
+- 🤖 **Bots & Automatización**: Bots para Discord e integraciones de servidor en **Python** (`discord-admin-bot`).
+- 🧠 **IA Local & Self-Hosting**: Experimentación con despliegue de LLMs y modelfiles con **Ollama** (`ollama-modelfiles`).
+- 🎮 **Gaming & Infraestructura**: Arquitectura y optimización de servidores dedicados de Minecraft 1.21+ Paper/Purpur.
+- 🐧 **Entorno Linux & Terminal**: Flujos de trabajo diarios, personalización y scripting en **Arch Linux** y **Fedora**.
 
 ---
 
