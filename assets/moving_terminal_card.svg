@@ -1,0 +1,141 @@
+<svg width="850" height="200" viewBox="0 0 850 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="termBg" cx="50%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#190d33"/>
+      <stop offset="50%" stop-color="#0e0620"/>
+      <stop offset="100%" stop-color="#070310"/>
+    </radialGradient>
+
+    <!-- Electric Neon Gradient -->
+    <linearGradient id="electricBeam" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="50%" stop-color="#e9d5ff"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+
+    <!-- Glowing filters -->
+    <filter id="neonBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      @keyframes floatCard {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-5px); }
+      }
+      @keyframes beamTravel {
+        0% { stroke-dashoffset: 0; }
+        100% { stroke-dashoffset: -1200; }
+      }
+      @keyframes blinkCursor {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      @keyframes textCycle1 {
+        0%, 22% { opacity: 1; transform: translateY(0); }
+        25%, 100% { opacity: 0; transform: translateY(4px); }
+      }
+      @keyframes textCycle2 {
+        0%, 24% { opacity: 0; transform: translateY(-4px); }
+        27%, 47% { opacity: 1; transform: translateY(0); }
+        50%, 100% { opacity: 0; transform: translateY(4px); }
+      }
+      @keyframes textCycle3 {
+        0%, 49% { opacity: 0; transform: translateY(-4px); }
+        52%, 72% { opacity: 1; transform: translateY(0); }
+        75%, 100% { opacity: 0; transform: translateY(4px); }
+      }
+      @keyframes textCycle4 {
+        0%, 74% { opacity: 0; transform: translateY(-4px); }
+        77%, 97% { opacity: 1; transform: translateY(0); }
+        100% { opacity: 0; transform: translateY(4px); }
+      }
+
+      .floating-wrap {
+        animation: floatCard 4.5s ease-in-out infinite;
+      }
+      .moving-beam {
+        stroke-dasharray: 220 500;
+        animation: beamTravel 7s linear infinite;
+      }
+      .cursor {
+        animation: blinkCursor 0.8s infinite;
+      }
+      .msg-1 { animation: textCycle1 16s ease-in-out infinite; }
+      .msg-2 { animation: textCycle2 16s ease-in-out infinite; }
+      .msg-3 { animation: textCycle3 16s ease-in-out infinite; }
+      .msg-4 { animation: textCycle4 16s ease-in-out infinite; }
+
+      .mono { font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace; }
+      .display { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Floating Group -->
+  <g class="floating-wrap">
+    <!-- Card Background Shadow & Frame -->
+    <rect x="5" y="5" width="840" height="185" rx="18" fill="url(#termBg)" stroke="#27114c" stroke-width="1.5"/>
+    
+    <!-- Moving Animated Neon Beam Border -->
+    <rect x="5" y="5" width="840" height="185" rx="18" fill="none" stroke="url(#electricBeam)" stroke-width="2" class="moving-beam" filter="url(#neonBlur)"/>
+
+    <!-- Terminal Header Bar -->
+    <g transform="translate(25, 20)">
+      <!-- Controls -->
+      <circle cx="8" cy="8" r="5" fill="#f43f5e" fill-opacity="0.8"/>
+      <circle cx="26" cy="8" r="5" fill="#eab308" fill-opacity="0.8"/>
+      <circle cx="44" cy="8" r="5" fill="#22c55e" fill-opacity="0.8"/>
+      
+      <!-- Terminal Title -->
+      <rect x="260" y="-2" width="320" height="22" rx="11" fill="#130826" stroke="#361763" stroke-width="1"/>
+      <circle cx="275" cy="9" r="3.5" fill="#c084fc"/>
+      <text x="290" y="13" fill="#e9d5ff" class="mono" font-size="11" font-weight="600">raiden@terminal: ~/autodidact-journey</text>
+      
+      <!-- Live Tag -->
+      <rect x="730" y="-2" width="65" height="22" rx="11" fill="#240f42" stroke="#a855f7" stroke-width="1"/>
+      <text x="762" y="13" text-anchor="middle" fill="#d8b4fe" class="mono" font-size="10" font-weight="700">LIVE ✦</text>
+    </g>
+
+    <line x1="25" y1="48" x2="825" y2="48" stroke="#251048" stroke-width="1"/>
+
+    <!-- Terminal Prompt Content Area -->
+    <g transform="translate(35, 78)">
+      <!-- Prompt Symbol -->
+      <text x="0" y="16" fill="#a855f7" class="mono" font-size="15" font-weight="700">❯</text>
+      <text x="18" y="16" fill="#38bdf8" class="mono" font-size="14" font-weight="600">echo</text>
+      <text x="60" y="16" fill="#f1f5f9" class="mono" font-size="14">"$MY_REALITY"</text>
+
+      <!-- Message 1 -->
+      <g class="msg-1">
+        <text x="0" y="52" fill="#e9d5ff" class="display" font-size="17" font-weight="700">"No estudié programación en la universidad, pero tengo hambre y disciplina infinita."</text>
+        <text x="0" y="76" fill="#a855f7" class="mono" font-size="12">✦ Me apoyo con la IA para aprender las bases y entender cómo funciona cada engranaje.</text>
+      </g>
+
+      <!-- Message 2 -->
+      <g class="msg-2">
+        <text x="0" y="52" fill="#c084fc" class="display" font-size="17" font-weight="700">"Mis armas actuales: Java para estructura, Python para automatizar y Go para sistemas."</text>
+        <text x="0" y="76" fill="#38bdf8" class="mono" font-size="12">✦ Y con la mente totalmente abierta a cualquier lenguaje que venga en el futuro.</text>
+      </g>
+
+      <!-- Message 3 -->
+      <g class="msg-3">
+        <text x="0" y="52" fill="#e9d5ff" class="display" font-size="17" font-weight="700">"Mi laboratorio diario: la terminal de Linux sobre Arch y Fedora."</text>
+        <text x="0" y="76" fill="#10b981" class="mono" font-size="12">✦ Aprender rompiendo, analizando los errores y volviendo a reconstruir desde cero.</text>
+      </g>
+
+      <!-- Message 4 -->
+      <g class="msg-4">
+        <text x="0" y="52" fill="#f0abfc" class="display" font-size="17" font-weight="700">"Humilde aprendiz hoy, constructor mañana. El progreso se forja con constancia."</text>
+        <text x="0" y="76" fill="#d946ef" class="mono" font-size="12">✦ Cada commit es un escalón más en este camino autodidacta.</text>
+      </g>
+
+      <!-- Blinking Cursor -->
+      <rect x="740" y="3" width="8" height="15" fill="#c084fc" class="cursor"/>
+    </g>
+  </g>
+</svg>
