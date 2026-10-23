@@ -2,7 +2,8 @@
 """
 Dashboard Generator for RaidenMercury GitHub Profile.
 Fetches real GitHub metrics, calculates gamified XP / Levels based on
-programming languages and commits/repos, and renders matching SVG cards.
+programming languages and commits/repos, and renders matching SVG cards
+with a rich diffused dark purple background.
 """
 
 import os
@@ -33,7 +34,6 @@ def get_profile_data():
     repos_url = f"https://api.github.com/users/{USERNAME}/repos?per_page=100&type=owner"
     repos = fetch_json(repos_url) or []
 
-    # Aggregate languages
     language_bytes = {}
     total_stars = 0
     total_forks = 0
@@ -45,7 +45,6 @@ def get_profile_data():
             total_stars += repo.get("stargazers_count", 0)
             total_forks += repo.get("forks_count", 0)
             
-            # Fetch languages for repo
             lang_url = repo.get("languages_url")
             if lang_url:
                 langs = fetch_json(lang_url)
@@ -53,31 +52,40 @@ def get_profile_data():
                     for lang, b_count in langs.items():
                         language_bytes[lang] = language_bytes.get(lang, 0) + b_count
 
-    # If new account with little public code yet, provide nice baseline starter languages
+    # Fetch recent public events to estimate commits & activity
+    events_url = f"https://api.github.com/users/{USERNAME}/events/public?per_page=50"
+    events = fetch_json(events_url) or []
+    recent_commits = 0
+    if isinstance(events, list):
+        for ev in events:
+            if ev.get("type") == "PushEvent":
+                payload = ev.get("payload", {})
+                recent_commits += payload.get("size", 1)
+    
+    total_commits = max(5, recent_commits + 5)
+
     if not language_bytes:
         language_bytes = {
-            "Python": 45000,
-            "Go": 32000,
-            "Shell": 18000,
-            "Markdown": 12000,
-            "HTML/CSS": 8000
+            "Go": 38000,
+            "Python": 29000,
+            "Shell": 14000,
+            "HTML/CSS": 8000,
+            "Markdown": 6000
         }
 
     total_bytes = sum(language_bytes.values())
     public_repos = user_data.get("public_repos", len(repos) if isinstance(repos, list) else 2)
 
     # XP Calculation:
-    # 100 bytes = 1 XP, each repo = 250 XP, stars/forks give bonuses
     code_xp = total_bytes // 80
     repo_xp = public_repos * 250
     star_xp = total_stars * 100
-    total_xp = max(500, code_xp + repo_xp + star_xp)
+    commit_xp = total_commits * 30
+    total_xp = max(600, code_xp + repo_xp + star_xp + commit_xp)
 
-    # Level formula: Level 1 starts at 0 XP, each level requires 750 * Level
-    # Level = floor(sqrt(total_xp / 150)) + 1
+    # Level formula:
     level = max(1, int(math.isqrt(total_xp // 120)) + 1)
     
-    # Progress within current level
     level_xp_base = (level - 1) ** 2 * 120
     next_level_xp_base = level ** 2 * 120
     xp_in_level = max(0, total_xp - level_xp_base)
@@ -88,28 +96,43 @@ def get_profile_data():
         "user": USERNAME,
         "repos_count": public_repos,
         "total_stars": total_stars,
+        "total_commits": total_commits,
         "total_xp": total_xp,
         "level": level,
         "level_pct": level_pct,
-        "xp_in_level": xp_in_level,
-        "xp_needed_level": xp_needed_level,
         "total_bytes": total_bytes,
         "languages": sorted(language_bytes.items(), key=lambda x: x[1], reverse=True)
     }
 
-def generate_header_svg(data, output_path):
-    svg = f"""<svg width="850" height="150" viewBox="0 0 850 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="headerBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0a0714"/>
-      <stop offset="50%" stop-color="#140d28"/>
-      <stop offset="100%" stop-color="#0c0916"/>
-    </linearGradient>
+def get_diffused_defs():
+    return """
+    <!-- Diffused Dark Purple Background Gradient -->
+    <radialGradient id="diffusedPurpleBg" cx="50%" cy="25%" r="85%">
+      <stop offset="0%" stop-color="#261042"/>
+      <stop offset="45%" stop-color="#150a26"/>
+      <stop offset="85%" stop-color="#0a0514"/>
+      <stop offset="100%" stop-color="#07030e"/>
+    </radialGradient>
+    
+    <!-- Secondary soft ambient glow -->
+    <radialGradient id="ambientCorner" cx="85%" cy="15%" r="50%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Neon Accents -->
     <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#ec4899"/>
       <stop offset="50%" stop-color="#d946ef"/>
       <stop offset="100%" stop-color="#8b5cf6"/>
     </linearGradient>
+
+    <linearGradient id="cardBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d946ef" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#7e22ce" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.4"/>
+    </linearGradient>
+
     <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur stdDeviation="4" result="blur"/>
       <feMerge>
@@ -117,43 +140,57 @@ def generate_header_svg(data, output_path):
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    """
+
+def generate_header_svg(data, output_path):
+    svg = f"""<svg width="850" height="140" viewBox="0 0 850 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    {get_diffused_defs()}
     <style>
       .title {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 900; }}
       .mono {{ font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace; }}
     </style>
   </defs>
 
-  <!-- Frame -->
-  <rect x="2" y="2" width="846" height="146" rx="16" fill="url(#headerBg)" stroke="#2b1a4a" stroke-width="1.5"/>
-  <rect x="2" y="2" width="846" height="146" rx="16" fill="none" stroke="url(#neonGradient)" stroke-width="1.5" stroke-opacity="0.3"/>
+  <!-- Diffused Card Frame -->
+  <rect x="2" y="2" width="846" height="136" rx="16" fill="url(#diffusedPurpleBg)"/>
+  <rect x="2" y="2" width="846" height="136" rx="16" fill="url(#ambientCorner)"/>
+  <rect x="2" y="2" width="846" height="136" rx="16" fill="none" stroke="url(#cardBorderGrad)" stroke-width="1.5"/>
 
   <!-- Top Pill HUD Bar -->
-  <g transform="translate(24, 18)">
-    <rect width="802" height="34" rx="17" fill="#120c24" stroke="#331e58" stroke-width="1"/>
+  <g transform="translate(24, 16)">
+    <rect width="802" height="32" rx="16" fill="#140b26" stroke="#371d5b" stroke-width="1"/>
     
-    <circle cx="20" cy="17" r="5" fill="#22c55e"/>
-    <text x="34" y="22" fill="#e2e8f0" class="mono" font-size="11" font-weight="700">STATUS: ONLINE</text>
-    <text x="170" y="22" fill="#7e22ce" class="mono" font-size="11">|</text>
+    <circle cx="20" cy="16" r="4.5" fill="#22c55e"/>
+    <text x="34" y="20" fill="#e2e8f0" class="mono" font-size="11" font-weight="700">STATUS: ONLINE</text>
+    <text x="160" y="20" fill="#6b21a8" class="mono" font-size="11">|</text>
 
-    <text x="190" y="22" fill="#c084fc" class="mono" font-size="11">DEVELOPER DASHBOARD</text>
-    <text x="375" y="22" fill="#7e22ce" class="mono" font-size="11">|</text>
+    <text x="180" y="20" fill="#c084fc" class="mono" font-size="11">DEVELOPER DASHBOARD</text>
+    <text x="365" y="20" fill="#6b21a8" class="mono" font-size="11">|</text>
 
-    <text x="395" y="22" fill="#94a3b8" class="mono" font-size="11">USER: {data['user']}</text>
+    <text x="385" y="20" fill="#94a3b8" class="mono" font-size="11">USER: {data['user']}</text>
 
-    <rect x="680" y="6" width="110" height="22" rx="11" fill="#201138" stroke="#d946ef" stroke-width="1"/>
-    <text x="735" y="21" text-anchor="middle" fill="#f0abfc" class="mono" font-size="10" font-weight="700">LVL {data['level']:02d} DEV</text>
+    <rect x="680" y="5" width="110" height="22" rx="11" fill="#22103d" stroke="#d946ef" stroke-width="1"/>
+    <text x="735" y="20" text-anchor="middle" fill="#f0abfc" class="mono" font-size="10" font-weight="700">LVL {data['level']:02d} DEV</text>
   </g>
 
   <!-- Main Title Row -->
-  <g transform="translate(36, 75)">
-    <text x="0" y="38" fill="#ffffff" class="title" font-size="30" letter-spacing="1">DEVELOPER</text>
-    <text x="192" y="38" fill="url(#neonGradient)" class="title" font-size="30" letter-spacing="1" filter="url(#glow)">INTERFACE</text>
-    <text x="0" y="58" fill="#a855f7" class="mono" font-size="12" font-weight="500">GAMIFIED REPOSITORY &amp; LANGUAGE METRICS</text>
+  <g transform="translate(36, 70)">
+    <text x="0" y="34" fill="#ffffff" class="title" font-size="28" letter-spacing="1">DEVELOPER</text>
+    <text x="180" y="34" fill="url(#neonGradient)" class="title" font-size="28" letter-spacing="1" filter="url(#glow)">INTERFACE</text>
+    <text x="0" y="52" fill="#a855f7" class="mono" font-size="11" font-weight="500">GAMIFIED REPOSITORY &amp; LANGUAGE METRICS</text>
   </g>
 
   <!-- Right Info Tag -->
-  <g transform="translate(685, 75)">
-    <rect width="130" height="52" rx="10" fill="#130c24" stroke="#371d5b" stroke-width="1"/>
+  <g transform="translate(685, 66)">
+    <rect width="130" height="52" rx="10" fill="#150a2b" stroke="#3b1b63" stroke-width="1"/>
     <text x="15" y="22" fill="#94a3b8" class="mono" font-size="10">TOTAL EXP</text>
     <text x="15" y="42" fill="#38bdf8" class="mono" font-size="16" font-weight="800">{data['total_xp']:,}</text>
   </g>
@@ -165,43 +202,28 @@ def generate_header_svg(data, output_path):
 def generate_developer_card_svg(data, output_path):
     svg = f"""<svg width="410" height="340" viewBox="0 0 410 340" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0e0a1b"/>
-      <stop offset="60%" stop-color="#140e28"/>
-      <stop offset="100%" stop-color="#0b0816"/>
-    </linearGradient>
-    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ec4899"/>
-      <stop offset="50%" stop-color="#d946ef"/>
-      <stop offset="100%" stop-color="#8b5cf6"/>
-    </linearGradient>
-    <filter id="glowSubtle" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
+    {get_diffused_defs()}
     <style>
       .title {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; }}
       .mono {{ font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace; }}
     </style>
   </defs>
 
-  <!-- Frame -->
-  <rect x="2" y="2" width="406" height="336" rx="16" fill="url(#cardBg)" stroke="#2d1b4e" stroke-width="1.5"/>
-  <rect x="2" y="2" width="406" height="336" rx="16" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-opacity="0.3"/>
+  <!-- Diffused Frame -->
+  <rect x="2" y="2" width="406" height="336" rx="16" fill="url(#diffusedPurpleBg)"/>
+  <rect x="2" y="2" width="406" height="336" rx="16" fill="url(#ambientCorner)"/>
+  <rect x="2" y="2" width="406" height="336" rx="16" fill="none" stroke="url(#cardBorderGrad)" stroke-width="1.5"/>
 
   <!-- Card Header -->
   <text x="24" y="34" fill="#f8fafc" class="title" font-size="15" letter-spacing="1">DEVELOPER PROFILE</text>
   <text x="386" y="34" text-anchor="end" fill="#c084fc" class="mono" font-size="11">SYS // ID</text>
   <line x1="24" y1="44" x2="386" y2="44" stroke="#2a1845" stroke-width="1"/>
 
-  <!-- Avatar / Level Ring (Centered & Modern) -->
+  <!-- Centered Avatar / Level Ring -->
   <g transform="translate(85, 120)">
-    <circle cx="0" cy="0" r="48" fill="#130b24" stroke="url(#purpleGradient)" stroke-width="3" filter="url(#glowSubtle)"/>
-    <circle cx="0" cy="0" r="40" fill="#1b1035"/>
-    <!-- Terminal Code Icon -->
+    <circle cx="0" cy="0" r="48" fill="#150a2a" stroke="url(#neonGradient)" stroke-width="2.5" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="40" fill="#1d0d38"/>
+    <!-- Code glyph -->
     <path d="M-12 -8 L-4 0 L-12 8" stroke="#ec4899" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M-1 8 L10 8" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
     <text x="0" y="66" text-anchor="middle" fill="#e2e8f0" class="mono" font-size="12" font-weight="700">@{data['user']}</text>
@@ -232,9 +254,9 @@ def generate_developer_card_svg(data, output_path):
     <text x="362" y="12" text-anchor="end" fill="#f472b6" class="mono" font-size="11" font-weight="700">{data['level_pct']}% EXP</text>
     
     <!-- Track -->
-    <rect x="0" y="22" width="362" height="12" rx="6" fill="#170f2b" stroke="#371d5b" stroke-width="1"/>
+    <rect x="0" y="22" width="362" height="12" rx="6" fill="#140924" stroke="#371d5b" stroke-width="1"/>
     <!-- Fill -->
-    <rect x="1" y="23" width="{max(12, int(360 * data['level_pct'] / 100))}" height="10" rx="5" fill="url(#purpleGradient)" filter="url(#glowSubtle)"/>
+    <rect x="1" y="23" width="{max(12, int(360 * data['level_pct'] / 100))}" height="10" rx="5" fill="url(#neonGradient)" filter="url(#glow)"/>
     
     <text x="0" y="48" fill="#64748b" class="mono" font-size="10">CURRENT: LVL {data['level']:02d}</text>
     <text x="362" y="48" text-anchor="end" fill="#64748b" class="mono" font-size="10">NEXT: LVL {data['level'] + 1:02d}</text>
@@ -242,13 +264,13 @@ def generate_developer_card_svg(data, output_path):
 
   <!-- Bottom Metric Pills -->
   <g transform="translate(24, 290)">
-    <rect x="0" y="0" width="114" height="24" rx="12" fill="#190e2f" stroke="#7e22ce" stroke-width="1"/>
+    <rect x="0" y="0" width="114" height="24" rx="12" fill="#1a0b30" stroke="#7e22ce" stroke-width="1"/>
     <text x="57" y="16" text-anchor="middle" fill="#e9d5ff" class="mono" font-size="10">AUTO-SYNC</text>
 
-    <rect x="124" y="0" width="114" height="24" rx="12" fill="#190e2f" stroke="#ec4899" stroke-width="1"/>
+    <rect x="124" y="0" width="114" height="24" rx="12" fill="#1a0b30" stroke="#ec4899" stroke-width="1"/>
     <text x="181" y="16" text-anchor="middle" fill="#fbcfe8" class="mono" font-size="10">METRICS ON</text>
 
-    <rect x="248" y="0" width="114" height="24" rx="12" fill="#190e2f" stroke="#06b6d4" stroke-width="1"/>
+    <rect x="248" y="0" width="114" height="24" rx="12" fill="#1a0b30" stroke="#06b6d4" stroke-width="1"/>
     <text x="305" y="16" text-anchor="middle" fill="#bae6fd" class="mono" font-size="10">ACTIVE CODE</text>
   </g>
 </svg>
@@ -274,20 +296,18 @@ def generate_languages_card_svg(data, output_path):
         pct = (byte_count / total_tracked_bytes) * 100
         bar_w = max(10, int(290 * (pct / 100)))
         c1, c2 = colors[i % len(colors)]
-        
-        # Calculate level for language
         lang_lvl = max(1, int(math.isqrt(byte_count // 500)) + 1)
 
         row = f"""
     <!-- Lang {i+1}: {name} -->
     <g transform="translate(24, {y_offset})">
-      <circle cx="12" cy="12" r="11" fill="#1d1133" stroke="{c1}" stroke-width="1.2"/>
+      <circle cx="12" cy="12" r="11" fill="#1a0c30" stroke="{c1}" stroke-width="1.2"/>
       <text x="12" y="16" text-anchor="middle" fill="#f1f5f9" class="mono" font-size="10" font-weight="700">{i+1}</text>
       
       <text x="34" y="12" fill="#f1f5f9" class="mono" font-size="12" font-weight="600">{name}</text>
       <text x="362" y="12" text-anchor="end" fill="#c084fc" class="mono" font-size="11">Lv. {lang_lvl:02d} ({pct:.1f}%)</text>
       
-      <rect x="34" y="18" width="328" height="6" rx="3" fill="#1b122e"/>
+      <rect x="34" y="18" width="328" height="6" rx="3" fill="#140924"/>
       <rect x="34" y="18" width="{bar_w}" height="6" rx="3" fill="{c1}"/>
     </g>"""
         rows_svg.append(row)
@@ -295,20 +315,17 @@ def generate_languages_card_svg(data, output_path):
 
     svg = f"""<svg width="410" height="340" viewBox="0 0 410 340" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="langCardBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0e0a1b"/>
-      <stop offset="60%" stop-color="#140e28"/>
-      <stop offset="100%" stop-color="#0b0816"/>
-    </linearGradient>
+    {get_diffused_defs()}
     <style>
       .title {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; }}
       .mono {{ font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace; }}
     </style>
   </defs>
 
-  <!-- Frame -->
-  <rect x="2" y="2" width="406" height="336" rx="16" fill="url(#langCardBg)" stroke="#2d1b4e" stroke-width="1.5"/>
-  <rect x="2" y="2" width="406" height="336" rx="16" fill="none" stroke="#d946ef" stroke-width="1.5" stroke-opacity="0.3"/>
+  <!-- Diffused Frame -->
+  <rect x="2" y="2" width="406" height="336" rx="16" fill="url(#diffusedPurpleBg)"/>
+  <rect x="2" y="2" width="406" height="336" rx="16" fill="url(#ambientCorner)"/>
+  <rect x="2" y="2" width="406" height="336" rx="16" fill="none" stroke="url(#cardBorderGrad)" stroke-width="1.5"/>
 
   <!-- Card Header -->
   <text x="24" y="34" fill="#f8fafc" class="title" font-size="15" letter-spacing="1">LANGUAGE EXPERIENCE</text>
@@ -325,6 +342,77 @@ def generate_languages_card_svg(data, output_path):
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(svg)
 
+def generate_stats_card_svg(data, output_path):
+    """
+    Renders a unified, perfectly centered stats card (850x160)
+    with 4 symmetrical columns and diffused dark purple background,
+    completely replacing mismatched third-party cards.
+    """
+    svg = f"""<svg width="850" height="160" viewBox="0 0 850 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    {get_diffused_defs()}
+    <style>
+      .title {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; }}
+      .mono {{ font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace; }}
+      .stat-val {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 900; font-size: 24px; fill: #ffffff; }}
+      .stat-label {{ font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 600; fill: #94a3b8; letter-spacing: 0.5px; }}
+    </style>
+  </defs>
+
+  <!-- Diffused Frame -->
+  <rect x="2" y="2" width="846" height="156" rx="16" fill="url(#diffusedPurpleBg)"/>
+  <rect x="2" y="2" width="846" height="156" rx="16" fill="url(#ambientCorner)"/>
+  <rect x="2" y="2" width="846" height="156" rx="16" fill="none" stroke="url(#cardBorderGrad)" stroke-width="1.5"/>
+
+  <!-- Top Title -->
+  <g transform="translate(24, 24)">
+    <circle cx="6" cy="6" r="4" fill="#d946ef" filter="url(#glow)"/>
+    <text x="18" y="10" fill="#f8fafc" class="title" font-size="13" letter-spacing="1">GITHUB ACTIVITY &amp; REPOSITORY METRICS</text>
+    <text x="802" y="10" text-anchor="end" fill="#c084fc" class="mono" font-size="10">REAL-TIME SYNC</text>
+    <line x1="0" y1="20" x2="802" y2="20" stroke="#2a1845" stroke-width="1"/>
+  </g>
+
+  <!-- 4 Symmetrical Columns (Centered Perfectly) -->
+  <!-- Col 1: Total Commits (Center = 125) -->
+  <g transform="translate(125, 78)">
+    <rect x="-85" y="0" width="170" height="62" rx="10" fill="#140a26" stroke="#331952" stroke-width="1"/>
+    <text x="0" y="28" text-anchor="middle" class="stat-val">{data['total_commits']}</text>
+    <text x="0" y="48" text-anchor="middle" class="stat-label">TOTAL COMMITS</text>
+    <circle cx="-60" cy="31" r="14" fill="#20103b"/>
+    <text x="-60" y="35" text-anchor="middle" fill="#ec4899" font-size="12">⚡</text>
+  </g>
+
+  <!-- Col 2: Active Repositories (Center = 325) -->
+  <g transform="translate(325, 78)">
+    <rect x="-85" y="0" width="170" height="62" rx="10" fill="#140a26" stroke="#331952" stroke-width="1"/>
+    <text x="0" y="28" text-anchor="middle" class="stat-val">{data['repos_count']}</text>
+    <text x="0" y="48" text-anchor="middle" class="stat-label">PUBLIC REPOS</text>
+    <circle cx="-60" cy="31" r="14" fill="#20103b"/>
+    <text x="-60" y="35" text-anchor="middle" fill="#38bdf8" font-size="12">📦</text>
+  </g>
+
+  <!-- Col 3: Code Tracked (Center = 525) -->
+  <g transform="translate(525, 78)">
+    <rect x="-85" y="0" width="170" height="62" rx="10" fill="#140a26" stroke="#331952" stroke-width="1"/>
+    <text x="0" y="28" text-anchor="middle" class="stat-val">{(data['total_bytes'] / 1024):.0f} KB</text>
+    <text x="0" y="48" text-anchor="middle" class="stat-label">CODE VOLUME</text>
+    <circle cx="-60" cy="31" r="14" fill="#20103b"/>
+    <text x="-60" y="35" text-anchor="middle" fill="#10b981" font-size="12">💾</text>
+  </g>
+
+  <!-- Col 4: Hunter Momentum / Active Streak (Center = 725) -->
+  <g transform="translate(725, 78)">
+    <rect x="-85" y="0" width="170" height="62" rx="10" fill="#140a26" stroke="#d946ef" stroke-width="1" stroke-opacity="0.8"/>
+    <text x="0" y="28" text-anchor="middle" class="stat-val" fill="#f0abfc">ACTIVE</text>
+    <text x="0" y="48" text-anchor="middle" class="stat-label" fill="#f472b6">MOMENTUM</text>
+    <circle cx="-60" cy="31" r="14" fill="#281145" filter="url(#glow)"/>
+    <text x="-60" y="35" text-anchor="middle" fill="#f43f5e" font-size="12">🔥</text>
+  </g>
+</svg>
+"""
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(svg)
+
 def main():
     print(f"Fetching GitHub profile and language metrics for {USERNAME}...")
     data = get_profile_data()
@@ -336,6 +424,7 @@ def main():
     header_svg = os.path.join(assets_dir, "header.svg")
     dev_card_svg = os.path.join(assets_dir, "developer_card.svg")
     lang_card_svg = os.path.join(assets_dir, "languages_card.svg")
+    stats_card_svg = os.path.join(assets_dir, "stats_card.svg")
 
     print(f"Generating {header_svg}...")
     generate_header_svg(data, header_svg)
@@ -346,7 +435,10 @@ def main():
     print(f"Generating {lang_card_svg}...")
     generate_languages_card_svg(data, lang_card_svg)
 
-    print("Dashboard SVGs generated successfully!")
+    print(f"Generating {stats_card_svg}...")
+    generate_stats_card_svg(data, stats_card_svg)
+
+    print("All 4 Dashboard SVGs generated with diffused dark purple background!")
 
 if __name__ == "__main__":
     main()

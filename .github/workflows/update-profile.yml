@@ -41,3 +41,4 @@ jobs:
             git commit -m "📊 Auto-sync: Update developer level, XP & language metrics"
             git push
           fi
+

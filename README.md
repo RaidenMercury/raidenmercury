@@ -1,19 +1,10 @@
 <div align="center">
 
   <!-- ============================================================== -->
-  <!-- 🔮 HEADER: DEVELOPER INTERFACE BANNER                            -->
+  <!-- 🔮 BANNER SUPERIOR: DEVELOPER INTERFACE                         -->
   <!-- ============================================================== -->
   <a href="https://github.com/RaidenMercury">
     <img src="assets/header.svg" width="100%" alt="Developer Interface Banner" />
-  </a>
-
-  <br/><br/>
-
-  <!-- ============================================================== -->
-  <!-- ⚡ TEXTO ANIMADO (TYPING EFFECT CON ESTILO NEÓN PÚRPURA)        -->
-  <!-- ============================================================== -->
-  <a href="https://github.com/RaidenMercury">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=19&duration=3000&pause=1000&color=D946EF&background=0F0C1B00&center=true&vCenter=true&width=650&lines=%E2%9A%A1+SISTEMA+ONLINE%3A+DEVELOPER+INTERFACE;%F0%9F%92%BB+TRACKEANDO+EXPERIENCIA+Y+LENGUAJES;%F0%9F%93%88+SUBIENDO+DE+NIVEL+PASO+A+PASO;%F0%9F%94%AE+CONVIRTIENDO+CURIOSIDAD+EN+C%C3%93DIGO+Y+PROYECTOS" alt="Typing SVG" />
   </a>
 
   <br/><br/>
@@ -28,12 +19,11 @@
   </p>
 
   <!-- ============================================================== -->
-  <!-- 📊 FILA 2: ESTADÍSTICAS GLOBALES + RACHA DE GITHUB             -->
-  <!-- (Dinámico en tiempo real vía GitHub API)                       -->
+  <!-- 📈 FILA 2: ESTADÍSTICAS GLOBALES DE GITHUB CENTRADAS           -->
+  <!-- (100% simétrico, centrado y con fondo morado difuminado)       -->
   <!-- ============================================================== -->
   <p align="center">
-    <img src="https://github-readme-stats.vercel.app/api?username=RaidenMercury&show_icons=true&bg_color=0e0a1b&title_color=d946ef&text_color=e2e8f0&icon_color=c084fc&border_color=2d1b4e&border_radius=16" width="49%" alt="GitHub Overall Stats" />
-    <img src="https://streak-stats.demolab.com?user=RaidenMercury&theme=tokyonight&background=0E0A1B&border=2D1B4E&stroke=D946EF&ring=C084FC&fire=E879F9&currStreakNum=FFFFFF&sideNums=E2E8F0&currStreakLabel=C084FC&sideLabels=A855F7&dates=94A3B8&border_radius=16" width="49%" alt="GitHub Streak Stats" />
+    <img src="assets/stats_card.svg" width="100%" alt="GitHub Metrics and Activity Card" />
   </p>
 
 </div>
@@ -108,5 +98,5 @@ Filosofía: Aprender haciendo, probar, romper y reconstruir
 <br/>
 
 <div align="center">
-  <sub>✦ Dashboard con estética Cyberpunk Violeta • Métricas sincronizadas automáticamente vía GitHub Actions ✦</sub>
+  <sub>✦ Dashboard Cyberpunk Violeta • Sincronizado automáticamente con GitHub Actions ✦</sub>
 </div>
