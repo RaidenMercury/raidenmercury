@@ -86,7 +86,7 @@
   <!-- Col 3: Code Tracked (Center = 525) -->
   <g transform="translate(525, 78)">
     <rect x="-85" y="0" width="170" height="62" rx="10" fill="#140a26" stroke="#331952" stroke-width="1"/>
-    <text x="0" y="28" text-anchor="middle" class="stat-val">148 KB</text>
+    <text x="0" y="28" text-anchor="middle" class="stat-val">153 KB</text>
     <text x="0" y="48" text-anchor="middle" class="stat-label">CODE VOLUME</text>
     <circle cx="-60" cy="31" r="14" fill="#20103b"/>
     <text x="-60" y="35" text-anchor="middle" fill="#10b981" font-size="12">💾</text>
