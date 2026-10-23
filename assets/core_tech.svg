@@ -46,6 +46,7 @@
       .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; }
       .mono { font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace; }
       .bold-txt { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; }
+      .desc-txt { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11px; fill: #cbd5e1; }
     </style>
   </defs>
 
@@ -70,7 +71,7 @@
     <rect x="290" y="2" width="72" height="20" rx="10" fill="#291206" stroke="#f59e0b" stroke-width="1"/>
     <text x="326" y="15" text-anchor="middle" fill="#fde68a" class="mono" font-size="9" font-weight="700">EN USO</text>
 
-    <text x="32" y="32" fill="#94a3b8" class="mono" font-size="10">Lógica, arquitectura &amp; servidores</text>
+    <text x="32" y="32" class="desc-txt">Lógica, arquitectura y servidores dedicados</text>
     <rect x="32" y="40" width="330" height="4" rx="2" fill="#140924"/>
     <rect x="32" y="40" width="300" height="4" rx="2" fill="url(#neonBarJava)"/>
   </g>
@@ -84,7 +85,7 @@
     <rect x="290" y="2" width="72" height="20" rx="10" fill="#082032" stroke="#38bdf8" stroke-width="1"/>
     <text x="326" y="15" text-anchor="middle" fill="#bae6fd" class="mono" font-size="9" font-weight="700">ACTIVO</text>
 
-    <text x="32" y="32" fill="#94a3b8" class="mono" font-size="10">Automatización, bots &amp; scripts CLI</text>
+    <text x="32" y="32" class="desc-txt">Automatización, bots y scripts del sistema</text>
     <rect x="32" y="40" width="330" height="4" rx="2" fill="#140924"/>
     <rect x="32" y="40" width="280" height="4" rx="2" fill="url(#neonBarPy)"/>
   </g>
@@ -98,12 +99,12 @@
     <rect x="290" y="2" width="72" height="20" rx="10" fill="#042622" stroke="#06b6d4" stroke-width="1"/>
     <text x="326" y="15" text-anchor="middle" fill="#a7f3d0" class="mono" font-size="9" font-weight="700">ACTIVO</text>
 
-    <text x="32" y="32" fill="#94a3b8" class="mono" font-size="10">Herramientas de sistemas &amp; redes</text>
+    <text x="32" y="32" class="desc-txt">Herramientas de sistemas y servicios de red</text>
     <rect x="32" y="40" width="330" height="4" rx="2" fill="#140924"/>
     <rect x="32" y="40" width="250" height="4" rx="2" fill="url(#neonBarGo)"/>
   </g>
 
-  <!-- Language 4: Futuros Horizontes -->
+  <!-- Language 4: Nuevas Tecnologías -->
   <g transform="translate(24, 258)">
     <circle cx="12" cy="14" r="10" fill="#1b1233" stroke="#c084fc" stroke-width="1.2"/>
     <text x="12" y="18" text-anchor="middle" fill="#c084fc" font-size="10">🔮</text>
@@ -112,7 +113,7 @@
     <rect x="290" y="2" width="72" height="20" rx="10" fill="#240f42" stroke="#c084fc" stroke-width="1"/>
     <text x="326" y="15" text-anchor="middle" fill="#f0abfc" class="mono" font-size="9" font-weight="700">ABIERTO</text>
 
-    <text x="32" y="32" fill="#94a3b8" class="mono" font-size="10">Aprendiendo según la necesidad del proyecto</text>
+    <text x="32" y="32" class="desc-txt">Aprendiendo según la necesidad del proyecto</text>
     <rect x="32" y="40" width="330" height="4" rx="2" fill="#140924"/>
     <rect x="32" y="40" width="330" height="4" rx="2" fill="url(#neonBarFuture)" filter="url(#glowTech)"/>
   </g>
@@ -121,6 +122,6 @@
   <g transform="translate(24, 326)">
     <rect width="362" height="48" rx="8" fill="#140826" stroke="#2e1053" stroke-width="1"/>
     <text x="181" y="20" text-anchor="middle" fill="#e9d5ff" class="bold-txt" font-size="10">&quot;El lenguaje es solo una herramienta.&quot;</text>
-    <text x="181" y="35" text-anchor="middle" fill="#94a3b8" class="mono" font-size="9">Lo importante es resolver problemas y facilitar el trabajo.</text>
+    <text x="181" y="35" text-anchor="middle" class="desc-txt">Lo importante es resolver problemas y facilitar el trabajo.</text>
   </g>
 </svg>
