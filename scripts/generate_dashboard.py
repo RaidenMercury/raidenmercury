@@ -66,11 +66,11 @@ def get_profile_data():
 
     if not language_bytes:
         language_bytes = {
-            "Go": 38000,
-            "Python": 29000,
-            "Shell": 14000,
-            "HTML/CSS": 8000,
-            "Markdown": 6000
+            "Go": 42000,
+            "Python": 34000,
+            "Java": 28000,
+            "JavaScript": 22000,
+            "Shell": 16000
         }
 
     total_bytes = sum(language_bytes.values())
@@ -135,13 +135,6 @@ def get_diffused_defs():
 
     <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur stdDeviation="4" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="6" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -342,77 +335,6 @@ def generate_languages_card_svg(data, output_path):
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(svg)
 
-def generate_stats_card_svg(data, output_path):
-    """
-    Renders a unified, perfectly centered stats card (850x160)
-    with 4 symmetrical columns and diffused dark purple background,
-    completely replacing mismatched third-party cards.
-    """
-    svg = f"""<svg width="850" height="160" viewBox="0 0 850 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    {get_diffused_defs()}
-    <style>
-      .title {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; }}
-      .mono {{ font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace; }}
-      .stat-val {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 900; font-size: 24px; fill: #ffffff; }}
-      .stat-label {{ font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 600; fill: #94a3b8; letter-spacing: 0.5px; }}
-    </style>
-  </defs>
-
-  <!-- Diffused Frame -->
-  <rect x="2" y="2" width="846" height="156" rx="16" fill="url(#diffusedPurpleBg)"/>
-  <rect x="2" y="2" width="846" height="156" rx="16" fill="url(#ambientCorner)"/>
-  <rect x="2" y="2" width="846" height="156" rx="16" fill="none" stroke="url(#cardBorderGrad)" stroke-width="1.5"/>
-
-  <!-- Top Title -->
-  <g transform="translate(24, 24)">
-    <circle cx="6" cy="6" r="4" fill="#d946ef" filter="url(#glow)"/>
-    <text x="18" y="10" fill="#f8fafc" class="title" font-size="13" letter-spacing="1">GITHUB ACTIVITY &amp; REPOSITORY METRICS</text>
-    <text x="802" y="10" text-anchor="end" fill="#c084fc" class="mono" font-size="10">REAL-TIME SYNC</text>
-    <line x1="0" y1="20" x2="802" y2="20" stroke="#2a1845" stroke-width="1"/>
-  </g>
-
-  <!-- 4 Symmetrical Columns (Centered Perfectly) -->
-  <!-- Col 1: Total Commits (Center = 125) -->
-  <g transform="translate(125, 78)">
-    <rect x="-85" y="0" width="170" height="62" rx="10" fill="#140a26" stroke="#331952" stroke-width="1"/>
-    <text x="0" y="28" text-anchor="middle" class="stat-val">{data['total_commits']}</text>
-    <text x="0" y="48" text-anchor="middle" class="stat-label">TOTAL COMMITS</text>
-    <circle cx="-60" cy="31" r="14" fill="#20103b"/>
-    <text x="-60" y="35" text-anchor="middle" fill="#ec4899" font-size="12">⚡</text>
-  </g>
-
-  <!-- Col 2: Active Repositories (Center = 325) -->
-  <g transform="translate(325, 78)">
-    <rect x="-85" y="0" width="170" height="62" rx="10" fill="#140a26" stroke="#331952" stroke-width="1"/>
-    <text x="0" y="28" text-anchor="middle" class="stat-val">{data['repos_count']}</text>
-    <text x="0" y="48" text-anchor="middle" class="stat-label">PUBLIC REPOS</text>
-    <circle cx="-60" cy="31" r="14" fill="#20103b"/>
-    <text x="-60" y="35" text-anchor="middle" fill="#38bdf8" font-size="12">📦</text>
-  </g>
-
-  <!-- Col 3: Code Tracked (Center = 525) -->
-  <g transform="translate(525, 78)">
-    <rect x="-85" y="0" width="170" height="62" rx="10" fill="#140a26" stroke="#331952" stroke-width="1"/>
-    <text x="0" y="28" text-anchor="middle" class="stat-val">{(data['total_bytes'] / 1024):.0f} KB</text>
-    <text x="0" y="48" text-anchor="middle" class="stat-label">CODE VOLUME</text>
-    <circle cx="-60" cy="31" r="14" fill="#20103b"/>
-    <text x="-60" y="35" text-anchor="middle" fill="#10b981" font-size="12">💾</text>
-  </g>
-
-  <!-- Col 4: Hunter Momentum / Active Streak (Center = 725) -->
-  <g transform="translate(725, 78)">
-    <rect x="-85" y="0" width="170" height="62" rx="10" fill="#140a26" stroke="#d946ef" stroke-width="1" stroke-opacity="0.8"/>
-    <text x="0" y="28" text-anchor="middle" class="stat-val" fill="#f0abfc">ACTIVE</text>
-    <text x="0" y="48" text-anchor="middle" class="stat-label" fill="#f472b6">MOMENTUM</text>
-    <circle cx="-60" cy="31" r="14" fill="#281145" filter="url(#glow)"/>
-    <text x="-60" y="35" text-anchor="middle" fill="#f43f5e" font-size="12">🔥</text>
-  </g>
-</svg>
-"""
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write(svg)
-
 def main():
     print(f"Fetching GitHub profile and language metrics for {USERNAME}...")
     data = get_profile_data()
@@ -424,7 +346,6 @@ def main():
     header_svg = os.path.join(assets_dir, "header.svg")
     dev_card_svg = os.path.join(assets_dir, "developer_card.svg")
     lang_card_svg = os.path.join(assets_dir, "languages_card.svg")
-    stats_card_svg = os.path.join(assets_dir, "stats_card.svg")
 
     print(f"Generating {header_svg}...")
     generate_header_svg(data, header_svg)
@@ -435,10 +356,7 @@ def main():
     print(f"Generating {lang_card_svg}...")
     generate_languages_card_svg(data, lang_card_svg)
 
-    print(f"Generating {stats_card_svg}...")
-    generate_stats_card_svg(data, stats_card_svg)
-
-    print("All 4 Dashboard SVGs generated with diffused dark purple background!")
+    print("Dashboard SVGs generated successfully!")
 
 if __name__ == "__main__":
     main()
