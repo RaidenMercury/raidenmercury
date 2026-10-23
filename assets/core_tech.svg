@@ -49,9 +49,9 @@
       <text x="32" y="14" fill="#f1f5f9" class="bold-txt" font-size="13">Go</text>
       
       <rect x="290" y="2" width="72" height="20" rx="10" fill="#150a24" stroke="#00ADD8" stroke-width="1"/>
-      <text x="326" y="15" text-anchor="middle" fill="#f1f5f9" class="mono" font-size="9" font-weight="700">42.4%</text>
+      <text x="326" y="15" text-anchor="middle" fill="#f1f5f9" class="mono" font-size="9" font-weight="700">42.6%</text>
 
-      <text x="32" y="32" class="desc-txt">59.1 KB de código en repositorios públicos</text>
+      <text x="32" y="32" class="desc-txt">60.4 KB de código en repositorios públicos</text>
       <rect x="32" y="40" width="330" height="4" rx="2" fill="#140924"/>
       <rect x="32" y="40" width="127" height="4" rx="2" fill="#00ADD8"/>
     </g>
@@ -63,11 +63,11 @@
       <text x="32" y="14" fill="#f1f5f9" class="bold-txt" font-size="13">Python</text>
       
       <rect x="290" y="2" width="72" height="20" rx="10" fill="#150a24" stroke="#38bdf8" stroke-width="1"/>
-      <text x="326" y="15" text-anchor="middle" fill="#f1f5f9" class="mono" font-size="9" font-weight="700">31.0%</text>
+      <text x="326" y="15" text-anchor="middle" fill="#f1f5f9" class="mono" font-size="9" font-weight="700">30.5%</text>
 
       <text x="32" y="32" class="desc-txt">43.2 KB de código en repositorios públicos</text>
       <rect x="32" y="40" width="330" height="4" rx="2" fill="#140924"/>
-      <rect x="32" y="40" width="93" height="4" rx="2" fill="#38bdf8"/>
+      <rect x="32" y="40" width="91" height="4" rx="2" fill="#38bdf8"/>
     </g>
     <!-- HTML Row -->
     <g transform="translate(24, 194)">
@@ -77,11 +77,11 @@
       <text x="32" y="14" fill="#f1f5f9" class="bold-txt" font-size="13">HTML</text>
       
       <rect x="290" y="2" width="72" height="20" rx="10" fill="#150a24" stroke="#e34c26" stroke-width="1"/>
-      <text x="326" y="15" text-anchor="middle" fill="#f1f5f9" class="mono" font-size="9" font-weight="700">26.5%</text>
+      <text x="326" y="15" text-anchor="middle" fill="#f1f5f9" class="mono" font-size="9" font-weight="700">27.0%</text>
 
-      <text x="32" y="32" class="desc-txt">37.0 KB de código en repositorios públicos</text>
+      <text x="32" y="32" class="desc-txt">38.2 KB de código en repositorios públicos</text>
       <rect x="32" y="40" width="330" height="4" rx="2" fill="#140924"/>
-      <rect x="32" y="40" width="79" height="4" rx="2" fill="#e34c26"/>
+      <rect x="32" y="40" width="80" height="4" rx="2" fill="#e34c26"/>
     </g>
 
   <!-- Bottom Real-time Sync Note -->
