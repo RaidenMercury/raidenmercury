@@ -1,6 +1,5 @@
 <svg width="850" height="220" viewBox="0 0 850 220" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
-    <!-- Background Gradient -->
     <radialGradient id="headerDark" cx="25%" cy="35%" r="85%">
       <stop offset="0%" stop-color="#1d0d38"/>
       <stop offset="40%" stop-color="#110722"/>
@@ -8,7 +7,6 @@
       <stop offset="100%" stop-color="#05020c"/>
     </radialGradient>
 
-    <!-- Glowing Electric Purple Accent -->
     <linearGradient id="neonViolet" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#e9d5ff"/>
       <stop offset="50%" stop-color="#c084fc"/>
@@ -44,13 +42,13 @@
 
   <!-- Top Pill -->
   <g transform="translate(30, 24)">
-    <rect width="500" height="26" rx="13" fill="#160a2b" stroke="#3b186b" stroke-width="1"/>
+    <rect width="520" height="26" rx="13" fill="#160a2b" stroke="#3b186b" stroke-width="1"/>
     <circle cx="14" cy="13" r="4" fill="#c084fc" filter="url(#glowEye)"/>
-    <text x="26" y="17" fill="#e9d5ff" class="mono" font-size="10" font-weight="700">CURIOSITY &gt; DEGREES</text>
-    <text x="175" y="17" fill="#7e22ce" class="mono" font-size="10">|</text>
-    <text x="190" y="17" fill="#c084fc" class="mono" font-size="10">SELF-TAUGHT DEVELOPER</text>
-    <text x="360" y="17" fill="#7e22ce" class="mono" font-size="10">|</text>
-    <text x="375" y="17" fill="#38bdf8" class="mono" font-size="10">AI-AUGMENTED LEARNER</text>
+    <text x="26" y="17" fill="#e9d5ff" class="mono" font-size="10" font-weight="700">IT TECHNICIAN</text>
+    <text x="130" y="17" fill="#7e22ce" class="mono" font-size="10">|</text>
+    <text x="145" y="17" fill="#c084fc" class="mono" font-size="10">FEDORA WORKSTATION</text>
+    <text x="305" y="17" fill="#7e22ce" class="mono" font-size="10">|</text>
+    <text x="320" y="17" fill="#38bdf8" class="mono" font-size="10">APRENDIENDO PROGRAMACIÓN</text>
   </g>
 
   <!-- Main Titles -->
@@ -58,14 +56,14 @@
     <text x="0" y="32" fill="#ffffff" class="title" font-size="34" letter-spacing="2">RAIDEN</text>
     <text x="148" y="32" fill="url(#neonViolet)" class="title" font-size="34" letter-spacing="2" filter="url(#glowEye)">MERCURY</text>
     
-    <text x="2" y="58" fill="#d8b4fe" class="mono" font-size="12" font-weight="500">APRENDIZ AUTODIDACTA // CONSTRUYENDO EL CAMINO DESDE CERO</text>
-    <text x="2" y="78" fill="#94a3b8" class="mono" font-size="11">JAVA • PYTHON • GO • ARCH LINUX • FEDORA • IA LOCAL</text>
+    <text x="2" y="58" fill="#d8b4fe" class="mono" font-size="12" font-weight="500">TÉCNICO INFORMÁTICO // ENFOCADO EN AUTOMATIZACIÓN &amp; SISTEMAS</text>
+    <text x="2" y="78" fill="#94a3b8" class="mono" font-size="11">JAVA • PYTHON • GO • FEDORA • INFRAESTRUCTURA &amp; BOTS</text>
   </g>
 
   <!-- Bottom Quote Badge -->
   <g transform="translate(30, 180)">
-    <rect width="440" height="20" rx="6" fill="#140826" stroke="#2e1053" stroke-width="1"/>
-    <text x="10" y="14" fill="#a855f7" class="mono" font-size="10">✦ &quot;Aprender a cualquier costo, con curiosidad y sin límites.&quot;</text>
+    <rect width="460" height="20" rx="6" fill="#140826" stroke="#2e1053" stroke-width="1"/>
+    <text x="10" y="14" fill="#a855f7" class="mono" font-size="10">✦ &quot;Construyendo herramientas y aprendiendo a programar paso a paso.&quot;</text>
   </g>
 
   <!-- Right Avatar Section with Electric Concentric Glow Rings -->
