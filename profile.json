@@ -1,9 +1,9 @@
 {
   "version": 1,
   "login": "RaidenMercury",
-  "seed": "#a855f7",
+  "seed": "#6d28d9",
   "seedFromAvatar": false,
-  "scheme": "vibrant",
+  "scheme": "tonalSpot",
   "motion": true,
   "iconFill": true,
   "order": [
