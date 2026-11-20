@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "login": "RaidenMercury",
+  "seed": "#a855f7",
+  "seedFromAvatar": false,
+  "scheme": "vibrant",
+  "motion": true,
+  "iconFill": true,
+  "order": [
+    "hero",
+    "about",
+    "stack",
+    "socials",
+    "projects",
+    "stats",
+    "streak",
+    "wave",
+    "buttons"
+  ],
+  "hidden": [
+    "socials"
+  ],
+  "hero": {
+    "greeting": "Hola, soy",
+    "name": "RaidenMercury",
+    "subtitle": "Soporte Técnico, Redes & Automatización de Sistemas.",
+    "typing": true,
+    "avatarShape": "cookie12",
+    "chips": [
+      {
+        "icon": "terminal",
+        "label": "Fedora Linux Workstation"
+      },
+      {
+        "icon": "code",
+        "label": "Java · Python · Go"
+      }
+    ]
+  },
+  "about": {
+    "title": "Sobre mí",
+    "items": [
+      {
+        "icon": "memory",
+        "label": "Hardware, redes e infraestructura"
+      },
+      {
+        "icon": "build",
+        "label": "Herramientas prácticas y automatización"
+      },
+      {
+        "icon": "dns",
+        "label": "Servidores dedicados en Java y CLI en Go"
+      },
+      {
+        "icon": "smart_toy",
+        "label": "Bots en Python e IA como apoyo técnico"
+      }
+    ]
+  },
+  "stack": {
+    "title": "Arsenal & Tecnologías",
+    "groups": [
+      {
+        "title": "Lenguajes",
+        "items": [
+          { "icon": "brand:openjdk", "label": "Java" },
+          { "icon": "brand:python", "label": "Python" },
+          { "icon": "brand:go", "label": "Go" },
+          { "icon": "brand:gnubash", "label": "Bash" },
+          { "icon": "brand:javascript", "label": "JavaScript" }
+        ]
+      },
+      {
+        "title": "Entorno & Herramientas",
+        "items": [
+          { "icon": "brand:fedora", "label": "Fedora" },
+          { "icon": "brand:linux", "label": "Linux" },
+          { "icon": "brand:git", "label": "Git" },
+          { "icon": "brand:docker", "label": "Docker" },
+          { "icon": "brand:discord", "label": "Discord" }
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "source": "pinned",
+    "repos": [],
+    "overrides": {},
+    "empty": "Sin descripción aún.",
+    "fork": "Fork"
+  },
+  "stats": {
+    "title": "Actividad en GitHub",
+    "stars": "Estrellas",
+    "contributions": "Contribuciones este año",
+    "repos": "Repos públicos",
+    "followers": "Seguidores",
+    "calendar": "Últimos 21 días",
+    "weekdays": "DLMMJVS",
+    "languages": "Lenguajes en mis repositorios",
+    "showLanguages": true
+  },
+  "streak": {
+    "title": "Racha",
+    "current": "Racha actual",
+    "longest": "Racha más larga",
+    "days": "días"
+  },
+  "socials": {
+    "items": [
+      { "icon": "brand:github", "url": "https://github.com/RaidenMercury" },
+      { "icon": "brand:discord", "url": "https://discord.com/users/846354655679873035" }
+    ],
+    "variant": "chip",
+    "fill": "tonal",
+    "card": true
+  },
+  "buttons": {
+    "items": [
+      {
+        "icon": "book_2",
+        "label": "Todos los repositorios",
+        "url": "https://github.com/RaidenMercury?tab=repositories",
+        "style": "filled"
+      },
+      {
+        "icon": "brand:discord",
+        "label": "Contactar en Discord",
+        "url": "https://discord.com/users/846354655679873035",
+        "style": "tonal"
+      }
+    ]
+  }
+}
