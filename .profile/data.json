@@ -1,5 +1,5 @@
 {
- "key": "420746a1",
+ "key": "37e60db1",
  "stars": 0,
  "contributions": 12,
  "repos": 3,
@@ -8,6 +8,10 @@
   [
    "TypeScript",
    486259
+  ],
+  [
+   "JavaScript",
+   360046
   ],
   [
    "Rust",
@@ -23,15 +27,11 @@
   ],
   [
    "Python",
-   44271
+   38133
   ],
   [
    "CSS",
    8840
-  ],
-  [
-   "JavaScript",
-   1886
   ]
  ],
  "days": [
@@ -183,7 +183,7 @@
    "text": "",
    "fork": false,
    "stars": 0,
-   "language": "Python",
+   "language": "JavaScript",
    "topics": []
   },
   {
