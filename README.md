@@ -2,9 +2,7 @@
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/top-card-dark.svg"><img src="assets/top-card-light.svg" width="100%" alt="Hola, soy RaidenMercury"></picture>
 
-<a href="https://github.com/RaidenMercury/raidenmercury"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-raidenmercury-dark.svg"><img src="assets/project-raidenmercury-light.svg" width="49%" alt="raidenmercury"></picture></a>&nbsp;<a href="https://github.com/RaidenMercury/ghostty-launcher"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-ghostty-launcher-dark.svg"><img src="assets/project-ghostty-launcher-light.svg" width="49%" alt="ghostty-launcher"></picture></a>
-
-<a href="https://github.com/RaidenMercury/sre-network-discovery"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-sre-network-discovery-dark.svg"><img src="assets/project-sre-network-discovery-light.svg" width="49%" alt="sre-network-discovery"></picture></a>
+<a href="https://github.com/RaidenMercury/ghostty-launcher"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-ghostty-launcher-dark.svg"><img src="assets/project-ghostty-launcher-light.svg" width="49%" alt="ghostty-launcher"></picture></a>&nbsp;<a href="https://github.com/RaidenMercury/sre-network-discovery"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-sre-network-discovery-dark.svg"><img src="assets/project-sre-network-discovery-light.svg" width="49%" alt="sre-network-discovery"></picture></a>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/bottom-card-dark.svg"><img src="assets/bottom-card-light.svg" width="100%" alt="Actividad en GitHub · Racha"></picture>
 
